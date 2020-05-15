@@ -19,6 +19,7 @@ def index(request):
     
 def about(request):
     return render(request,"about.html")
+
 @login_required(login_url = "user:login")
 def dashboard(request):
     articles = Article.objects.filter(author = request.user)
@@ -26,6 +27,7 @@ def dashboard(request):
         "articles":articles
     }
     return render(request,"dashboard.html",context)
+
 @login_required(login_url = "user:login")
 def addArticle(request):
     form = ArticleForm(request.POST or None,request.FILES or None)
@@ -38,13 +40,18 @@ def addArticle(request):
 
         messages.success(request,"Makale başarıyla oluşturuldu")
         return redirect("article:dashboard")
-    return render(request,"addarticle.html",{"form":form})
+    
+    data = {"form":form}
+    return render(request,"addarticle.html",data)
+    # return HttpResponse({"form":form})
+
 def detail(request,id):
     #article = Article.objects.filter(id = id).first()   
     article = get_object_or_404(Article,id = id)
 
     comments = article.comments.all()
     return render(request,"detail.html",{"article":article,"comments":comments})
+
 @login_required(login_url = "user:login")
 def updateArticle(request,id):
 

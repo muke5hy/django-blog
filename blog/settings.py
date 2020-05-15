@@ -38,10 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "article",
-    "user",
-    'crispy_forms',
-    "ckeditor",
-    'django_cleanup',
+    "bootstrap4",
+    'tinymce',
 
     
 ]
@@ -111,9 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'tr'
+LANGUAGE_CODE = 'EN'
 
-TIME_ZONE = 'Europe/Istanbul'
+# TIME_ZONE = 'Europe/Istanbul'
 
 USE_I18N = True
 
